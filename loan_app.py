@@ -1,10 +1,9 @@
 import streamlit as st
-import pickle
+import joblib
 import pandas as pd
 
 #Loading the model 
-with open("Loan_Approval_Model.pkl","rb") as f:
-    predictor=pickle.load(f)
+model=joblib.load("Loan_Approval_Model.joblib") 
 #Giving the title to the APP
 st.title("Loan Approval")
 #uploading the users data
@@ -20,7 +19,7 @@ if upload_file is not None:
       st.dataframe(df)
 
       if st.button("Predict"):
-          results=predictor.predict(df)
+          results=model.predict(df)
           op_list=[]
           for target in results:
               if target ==0:
