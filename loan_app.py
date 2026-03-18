@@ -3,7 +3,7 @@ import joblib
 import pandas as pd
 
 #Loading the model 
-model=joblib.load("Loan_Approval_Model.joblib") 
+model=joblib.load("loan_prediction.joblib") 
 #Giving the title to the APP
 st.title("Loan Approval")
 #uploading the users data
