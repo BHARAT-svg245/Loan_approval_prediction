@@ -1,6 +1,7 @@
 import streamlit as st
 import pickle
 import pandas as pd
+
 #Loading the model 
 with open("Loan_Approval_Model.pkl","rb") as f:
     predictor=pickle.load(f)

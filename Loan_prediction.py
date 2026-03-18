@@ -1,6 +1,6 @@
 import pandas as pd
 import numpy as np
-import pickle
+import joblib
 # Reading the data
 df=pd.read_csv("loan_approval_dataset.csv")
 df=df.drop("loan_id",axis=1)
@@ -33,12 +33,11 @@ pipe=Pipeline([("preprocessor",preprocessor),("classifier",model)])
 # fitting the data for training
 pipe.fit(x_train,y_train)
 #saving the model
-# with open("Loan_Approval_Model.pkl","wb") as f:
-#     pickle.dump(pipe,f)
+model=joblib.dump(pipe,"loan_prediction.joblib")
 #checking the model
-df=pd.read_csv("secondloan2.csv")
-df=df.drop("loan_id",axis=1)
-with open("Loan_Approval_Model.pkl","rb") as f:
-    loaded_model=pickle.load(f)
-y_pred=loaded_model.predict(df)
-print(y_pred)
+# df=pd.read_csv("secondloan2.csv")
+# df=df.drop("loan_id",axis=1)
+# with open("Loan_Approval_Model.pkl","rb") as f:
+#     loaded_model=pickle.load(f)
+# y_pred=loaded_model.predict(df)
+# print(y_pred)
